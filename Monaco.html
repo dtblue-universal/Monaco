@@ -1,0 +1,659 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<!-- <meta name="transparent" content="true"> -->
+	<style type="text/css">
+		:root {
+			/* DO NOT TOUCH THIS! MODIFY OR CREATE A FILE CALLED `image.txt` IN THIS FOLDER */
+			--url: url("IMG_URL");
+		}
+
+		html,
+		body {
+			background-color: #222222;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			font-family: Consolas, 'Courier New', monospace;
+			color: white;
+		}
+
+		div#krnl {
+			display: block;
+			position: fixed;
+			width: 100vw;
+			height: 100vh;
+			background: url(data:image/png;base64,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) center center no-repeat;
+			filter: blur(10px) opacity(.2);
+		}
+
+		div#bg {
+			display: block;
+			position: fixed;
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+			background-size: cover;
+			background-attachment: fixed;
+			border: 0 !important;
+
+			/**
+			  * Comment out the filter line if you do not want a blur effect!
+			  * If you want to remove the transparency, remove opacity or if you want to edit it, 0 -> invis, 1 -> vis
+			  * If you want to remove darkness, remove brightness
+			  */
+			filter: blur(6px) opacity(.5) brightness(0.3);
+		}
+
+		div#parent {
+			position: relative;
+			height: 100%;
+			width: 100%;
+		}
+
+		div.scrollbar.vertical > * {
+			position: absolute !important;
+			width: 8px !important;
+			right: 12px !important;
+			background: none;
+			background-color: rgba(0, 0, 0, 0.25) !important;
+			border: 1px solid rgba(255, 255, 255, 0.25) !important;
+			box-sizing: border-box !important;
+			border-radius: 4px !important;
+			transform: translate3d(0px, 0px, 0px) !important;
+			contain: strict !important;
+		}
+
+		div.scrollbar.horizontal > * {
+			position: absolute !important;
+			height: 8px !important;
+			right: 12px !important;
+			background: none;
+			background-color: rgba(0, 0, 0, 0.25) !important;
+			border: 1px solid rgba(255, 255, 255, 0.25) !important;
+			box-sizing: border-box !important;
+			border-radius: 4px !important;
+			transform: translate3d(0px, 0px, 0px) !important;
+			contain: strict !important;
+		}
+
+		canvas:not(.minimap-decorations-layer) {
+			display: none !important;
+		}
+
+		canvas.decorationsOverviewRuler {
+			display: none !important;
+		}
+
+		.minimap-shadow-visible {
+			display: none !important;
+		}
+
+		canvas.minimap-decorations-layer {
+			background-color: transparent;
+		}
+	</style>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+
+<body>
+	<div id="parent">
+		<div id="krnl"></div>
+		<div id="bg"></div>
+		<div id="container" style="width:100%;height:100%;"></div>
+	</div>
+
+	<script src="vs/loader.js"></script>
+	<script type="text/javascript">
+		require.config({
+			paths: {
+				'vs': 'vs',
+			}
+		});
+
+		// API
+		var GetText;
+		var SetText;
+		var SetTheme;
+		var SetScroll;
+		var ShowErr;
+		var Refresh;
+
+		// Enablers
+		var SwitchMinimap;
+		var SwitchReadonly;
+		var SwitchRenderWhitespace;
+		var SwitchLinks;
+		var SwitchLineHeight;
+		var SwitchFontSize;
+		var SwitchFolding;
+		var SwitchAutoIndent;
+		var SwitchFontFamily;
+		var SwitchFontLigatures;
+		var AddIntellisense;
+		var UpdateTheme;
+		var GOTO;
+		var SetScript;
+		var GetScript;
+		var DeleteScript;
+		var ScriptBlox;
+
+		// Variables
+		var editor;
+		var Proposals = [];
+
+		require(['vs/scriptblox'], async function(sb) {
+			ScriptBlox = sb;
+		})
+
+		require(['vs/editor/editor.main'], function () {
+			function getDependencyProposals() {
+				let newProposals = [];
+				for (let index = 0; index < Proposals.length; index++) {
+					const element = Proposals[index];
+					let newElement = {}
+					for (const key in element) {
+						if (key == "__children__") {
+							continue;
+						};
+						newElement[key] = element[key];
+					}
+					newProposals.push(newElement)
+				}
+
+				return newProposals;
+			}
+
+			monaco.editor.defineTheme('krnlDark', {
+				base: 'vs-dark',
+				inherit: true,
+				rules: [
+					{ token: '', foreground: '#C3CCDB' },
+					{ token: 'variable.language.self', foreground: '#F7768E' },
+					{ token: 'variable.parameter.variadic', foreground: '#F7768E' },
+					{ token: 'variable.parameter.function', foreground: '#E0AF68' },
+					{ token: 'variable.other.constant', foreground: '#FF9E64' },
+					{ token: 'variable.property', foreground: '#7DCFFF' },
+					{ token: 'variable.object.property', foreground: '#73DACA' },
+
+					{ token: 'keyword', foreground: '#BB9AF7' },
+					{ token: 'keyword.local', foreground: '#997BD6', fontStyle: 'italic' },
+					{ token: 'keyword.operator', foreground: '#89DDFF' },
+					{ token: 'keyword.operator.type.annotation', foreground: '#9ABDF5' },
+					{ token: 'keyword.operator.typedef.annotation', foreground: '#89DDFF' },
+					{ token: 'keyword.control.export', foreground: '#997BD6', fontStyle: 'italic' },
+
+					{ token: 'operator', foreground: '#89DDFF' },
+					{ token: 'operator.type', foreground: '#BB9AF7' },
+					{ token: 'operator.special', foreground: '#BB9AF7' },
+
+					{ token: 'entity.name.type.alias', foreground: '#5ab6d6' },
+					{ token: 'entity.name.function', foreground: '#7AA2F7' },
+
+					{ token: 'global', foreground: '#7AA2F7' },
+
+					{ token: 'storage.type', foreground: '#BB9AF7' },
+
+					{ token: 'comment', foreground: '#666666', fontStyle: 'italic' },
+					{ token: 'comment.highlight.title', foreground: '#89DDFF', fontStyle: 'italic' },
+					{ token: 'comment.highlight.name', foreground: '#89DDFF', fontStyle: 'italic' },
+					{ token: 'comment.delimiter.modifier', foreground: '#9ABDF5', fontStyle: 'italic' },
+					{ token: 'comment.highlight.modifier', foreground: '#7DCFFF', fontStyle: 'italic' },
+					{ token: 'comment.highlight.descriptor', foreground: '#F7768E', fontStyle: 'italic' },
+
+					{ token: 'delimiter.longstring', foreground: '#89DDFF' },
+					{ token: 'delimiter.bracket', foreground: '#a6afbd' },
+					{ token: 'delimiter.array', foreground: '#a6afbd' },
+					{ token: 'delimiter.parenthesis', foreground: '#a6afbd' },
+					{ token: 'delimiter', foreground: '#a6afbd' },
+
+					{ token: 'string', foreground: '#9ECE6A' },
+					{ token: 'string_double', foreground: '#9ECE6A' },
+					{ token: 'string_single', foreground: '#9ECE6A' },
+					{ token: 'string_backtick', foreground: '#9ECE6A' },
+					{ token: 'longstring', foreground: '#9ECE6A' },
+					{ token: 'string.delimeter', foreground: '#89DDFF' },
+					{ token: 'string.escape', foreground: '#89DDFF' },
+
+					{ token: 'punctuation.separator.arguments', foreground: '#9ABDF5' },
+					{ token: 'punctuation.separator.parameter', foreground: '#89DDFF' },
+					{ token: 'punctuation.separator.table', foreground: '#89DDFF' },
+					{ token: 'punctuation.definition.block', foreground: '#9ABDF5' },
+					{ token: 'punctuation.definition.parameters', foreground: '#9ABDF5' },
+					{ token: 'punctuation.definition.typeparameters', foreground: '#89DDFF' },
+
+					{ token: 'constant.language', foreground: '#FF9E64' },
+					{ token: 'number', foreground: '#FF9E64' },
+					{ token: 'constants', foreground: '#FF9E64' },
+
+					// { token: 'support.function', foreground: '#0DB9D7' },
+					// { token: 'support.function.library', foreground: '#0DB9D7' },
+					// { token: 'support.type', foreground: '#0DB9D7' },
+					{ token: 'support.function', foreground: '#0DB9D7' },
+					{ token: 'support.function.library', foreground: '#0DB9D7' },
+					{ token: 'support.type', foreground: '#5ab6d6' },
+				],
+				colors: {
+					// 'editor.background': '#222222',
+					'editor.background': '#00000000', // no need for bg so transparent
+
+					'editorLineNumber.foreground': '#7A7A7A',
+					'editorLineNumber.activeForeground': '#BBBBBB',
+
+					'editor.lineHighlightBackground': '#141414cc',
+
+					'editorIndentGuide.background': '#282828',
+
+					'editorSuggestWidget.background': "#181818",
+					'editorSuggestWidget.border': "#000000",
+					'editorSuggestWidget.foreground': "#D5D5D5",
+					'editorSuggestWidget.selectedBackground': "#363636",
+					'editorSuggestWidget.highlightForeground': "#18A0FB",
+
+					'textCodeBlock.background': '#181818',
+				}
+			});
+
+			require(['vs/basic-languages/monaco.contribution'], function () {
+				const ignore = [`game:GetService(""`, `Instance.new(""`];
+				monaco.languages.registerCompletionItemProvider('lua', {
+					provideCompletionItems: function (model, position) {
+						// Check if inside string quotes, then don't offer variable completion as inside quotes only area completion should be available
+						for (const symbol of ['\'', '"'])
+						{
+							var quotes = model.findMatches(`.*${symbol}([^${symbol}])*${symbol}`, true, true, true, null, true);
+							if (quotes.length > 0) {
+								for (let quote of quotes) {
+									if ((position.lineNumber === quote.range.startLineNumber) && (position.column >= quote.range.startColumn && position.column <= quote.range.endColumn)) {
+										if (ignore.find(s => quote.matches[0].endsWith(s))) break;
+										console.log('return cuz in string')
+										return;
+									}
+								}
+							}
+						}
+
+						let closest_cb_sline = -1;
+						let closest_cb_scolumn = -1;
+						let closest_cb_eline = -1;
+						let closest_cb_ecolumn = -1;
+						let cb_equal = '';
+						for (const quote of model.findMatches(/--\[([=]*)\[/, true, true, false, null, true))
+						{
+							if (quote.range.startLineNumber <= position.lineNumber)
+							{
+								closest_cb_sline = quote.range.startLineNumber;
+								closest_cb_scolumn = quote.range.startColumn;
+								cb_equal = quote.matches[1];
+							}
+							else break;
+						}
+
+						for (const quote of model.findMatches(/\]([=]*)\]/, true, true, false, null, true))
+						{
+							if (quote.range.startLineNumber >= position.lineNumber && quote.matches[1] === cb_equal)
+							{
+								closest_cb_eline = quote.range.startLineNumber;
+								closest_cb_ecolumn = quote.range.startColumn;
+								break;
+							}
+						}
+
+						for (const quote of model.findMatches(/--(.*)/, true, true, false, null, true))
+						{
+							if (quote.range.startLineNumber == position.lineNumber)
+							{
+								console.log('returned cuz in comment')
+								return;
+							}
+						}
+
+						if ([closest_cb_sline, closest_cb_scolumn].indexOf(-1) === -1)
+						{
+							console.log('entered');
+							if ([ closest_cb_eline, closest_cb_ecolumn ].indexOf(-1) !== -1)
+								return console.log('cb0');
+
+							if (closest_cb_eline !== position.lineNumber) {
+								return console.log('cb1');
+							}
+
+							if (closest_cb_ecolumn >= position.column) {
+								return console.log('cb2');
+							}
+						}
+
+						return {
+							suggestions: getDependencyProposals(),
+						};
+					},
+					triggerCharacters: ['.', ':', '"'],
+				});
+
+				editor = monaco.editor.create(document.getElementById('container'), {
+					// cursor
+					cursorStyle: 'line',
+					cursorBlinking: 'expand',
+					cursorSmoothCaretAnimation: 'explicit',
+
+					// others
+					renderValidationDecorations: 'on',
+
+					value: '-- Krnl Monaco v2',
+					language: 'lua',
+					theme: 'krnlDark',
+					fontSize: "14px",
+					fontFamily: "'JetBrains Mono', Consolas, 'Courier New', monospace",
+					folding: true,
+					dragAndDrop: true,
+					links: false,
+					minimap: {
+						enabled: false,
+					},
+					showFoldingControls: "always",
+					smoothScrolling: true,
+					stopRenderingLineAfter: 6500,
+					foldingHighlight: true,
+					fontLigatures: true,
+					formatOnPaste: true,
+					showDeprecated: true,
+					stickyTabStops: true,
+					useTabStops: true,
+					suggest: {
+						snippetsPreventQuickSuggestions: false,
+					},
+					padding: {
+						top: 24,
+					}
+				});
+
+				try {
+					if (CefSharp) {
+						editor.getModel().onDidChangeContent(function (e) {
+							if (!e.isFlush) {
+								CefSharp.PostMessage('keydown')
+							}
+						})
+
+						CefSharp.PostMessage('init')
+
+						editor.addAction({
+							id: "ctxmnu_i",
+							label: "Update Background Image",
+							keybindings: [],
+							contextMenuGroupId: "themes",
+							contextMenuOrder: 30,
+							run: editor => {
+								CefSharp.PostMessage("update_theme")
+							}
+						});
+
+						editor.addAction({
+							id: "ctxmnu_i2",
+							label: "Edit Background Image",
+							keybindings: [],
+							contextMenuGroupId: "themes",
+							contextMenuOrder: 29,
+							run: editor => {
+								CefSharp.PostMessage("edit_theme")
+							}
+						});
+
+						setInterval(() => {
+							CefSharp.PostMessage('save_tabs')
+						}, 5000)
+					}
+				} catch { }
+
+				editor.getModel().updateOptions({ insertSpaces: false });
+			});
+
+			window.onresize = function () {
+				editor.layout();
+			}
+
+			Cut = function () {
+				editor.focus();
+				document.execCommand('cut');
+			}
+
+			Copy = function () {
+				editor.focus();
+				document.execCommand('copy');
+			}
+
+			Paste = function () {
+				editor.focus();
+				document.execCommand('paste');
+			}
+
+			Undo = function () {
+				editor.focus();
+				document.execCommand('undo');
+			}
+
+			Redo = function () {
+				editor.focus();
+				document.execCommand('redo');
+			}
+
+			Delete = function () {
+				editor.focus();
+				document.execCommand('delete');
+			}
+
+			SelectAll = function () {
+				editor.focus();
+				document.execCommand('selectAll');
+			}
+
+			GetText = function () {
+				return String(editor.getValue());
+			}
+
+			SetText = function (x) {
+				editor.setValue(String(x))
+
+				try {
+					CefSharp.PostMessage('validate_syntax')
+				} catch { }
+			}
+
+			GetProposals = function () {
+				return Proposals;
+			}
+
+
+			OnDidChangeContent = function (callback) {
+				return editor.onDidChangeModelContent((event) => {
+					callback(editor.getValue());
+				});
+			}
+
+			OnDidChangeCursorPosition = function (callback) {
+				return editor.onDidChangeCursorPosition((event) => {
+					callback(event.position);
+				});
+			}
+
+			SetTheme = function (themeName) {
+				if (themeName == 'krnlDark') {
+					monaco.editor.setTheme('krnlDark')
+				}
+				if (themeName == "Dark") {
+					monaco.editor.setTheme("net-theme-dark");
+				}
+				if (themeName == "Light") {
+					monaco.editor.setTheme("net-theme-light");
+				}
+			}
+
+			UpdateTheme = function (url) {
+				const krnl = document.getElementById('krnl');
+				const bg = document.getElementById('bg');
+
+				if (url == '' || url == null) {
+					krnl.style.left = '-1000000px';
+					return;
+				}
+
+				const img = document.createElement('img');
+				img.style.maxWidth = 0;
+				img.style.maxHeight = 0;
+				img.src = url;
+
+				img.addEventListener('load', () => {
+					bg.style.backgroundImage = `url(${url})`;
+					krnl.style.left = '-1000000px';
+					img.remove();
+				})
+
+				img.addEventListener('error', () => {
+					bg.style.backgroundImage = '';
+					krnl.style.left = '0';
+					img.remove();
+				})
+			}
+
+			SwitchMinimap = function (flag) {
+				editor.updateOptions({
+					minimap: {
+						enabled: flag,
+					}
+				});
+			}
+
+			SwitchReadonly = function (flag) {
+				editor.updateOptions({
+					readOnly: flag,
+				});
+			}
+
+			SwitchRenderWhitespace = function (op) {
+				editor.updateOptions({
+					renderWhitespace: op,
+				});
+			}
+
+			SwitchLinks = function (flag) {
+				editor.updateOptions({
+					links: flag,
+				});
+			}
+
+			SwitchLineHeight = function (num) {
+				editor.updateOptions({
+					lineHeight: num,
+				});
+			}
+
+			SwitchFontSize = function (num) {
+				editor.updateOptions({
+					fontSize: num,
+				});
+			}
+
+			SwitchFolding = function (flag) {
+				editor.updateOptions({
+					folding: flag,
+				});
+			}
+
+			SwitchAutoIndent = function (flag) {
+				editor.updateOptions({
+					autoIndent: flag,
+				});
+			}
+
+			SwitchFontFamily = function (name) {
+				editor.updateOptions({
+					fontFamily: name,
+				});
+			}
+
+			SwitchFontLigatures = function (flag) {
+				editor.updateOptions({
+					fontLigatures: flag,
+				});
+			}
+
+			ShowErr = function (line, column, endline, endcolumn, errMessage) {
+				editor.revealPositionInCenter({ lineNumber: line, column: column });
+				editor.deltaDecorations([], [
+					{
+						range: new monaco.Range(line, column, endline, endcolumn),
+						options: {
+							inlineClassName: 'squiggly-error',
+							hoverMessage: {
+								value: errMessage,
+							}
+						},
+					},
+				]);
+			}
+
+			ClearMarker = () => monaco.editor.setModelMarkers(editor.getModel(), 'luaparse', []);
+
+			ShowMarker = function (line, column, endline, endcolumn, message) {
+				if (typeof line !== 'number') return ClearMarker();
+
+				const marker = {
+					startLineNumber: line,
+					endLineNumber: endline,
+					startColumn: column,
+					endColumn: endcolumn,
+					message,
+					severity: monaco.MarkerSeverity.Error
+				};
+
+				monaco.editor.setModelMarkers(editor.getModel(), 'luaparse', [ marker ]);
+			}
+
+			ShowMarkerV2 = function (markers) {
+				monaco.editor.setModelMarkers(editor.getModel(), 'luaparse', markers);
+			}
+
+			AddSnippet = function (kindName, snippetName, data) {
+				let snippet = {
+					insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+					kind: monaco.languages.CompletionItemKind[kindName],
+				};
+				for (const key in data) {
+					let value = data[key];
+					if (key == "insertText" && typeof value == "object") {
+						value = value.join("\n");
+					};
+					snippet[key] = value;
+				}
+				if (!snippet.label) {
+					snippet.label = snippetName
+				}
+				if (!snippet.insertText) {
+					snippet.insertText = snippetName
+				}
+				Proposals.push(snippet);
+			}
+
+			AddRawSnippet = function (data) {
+				Proposals.push(data);
+			}
+
+			SetScroll = function (line) {
+				editor.revealLineInCenter({ lineNumber: line });
+			}
+
+			Refresh = function () {
+				var text = getText();
+				setText("");
+				editor.trigger('keyboard', 'type', { text: text });
+			}
+		});
+	</script>
+</body>
+
+</html>
