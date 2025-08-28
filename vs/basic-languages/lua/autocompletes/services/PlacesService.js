@@ -1,0 +1,1 @@
+define(['require','exports'],(require,exports)=>{Object.defineProperty(exports,'__esModule',{value:true});exports['autocompletes']={"Method":{"StartPlaySolo()":{"insertText":"StartPlaySolo()","documentation":{"value":"[View documentation](https://create.roblox.com/docs/reference/engine/classes/PlacesService#StartPlaySolo)"}}},"Enum":{},"Field":{},"Event":{}};});
