@@ -1,0 +1,1 @@
+define(['require','exports'],(require,exports)=>{Object.defineProperty(exports,'__esModule',{value:true});exports['autocompletes']={"Method":{"GetDeviceId()":{"insertText":"GetDeviceId()","documentation":{"value":"[View documentation](https://create.roblox.com/docs/reference/engine/classes/DeviceIdService#GetDeviceId)"}}},"Enum":{},"Field":{},"Event":{}};});
